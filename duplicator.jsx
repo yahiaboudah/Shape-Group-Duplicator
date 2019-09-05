@@ -1,3 +1,6 @@
+/* The duplicator script allows you to duplicate 
+shape layer groups as many times as you like. */
+
 var win = new Window("palette"); 
     win.text = "Duplicator"; 
     win.orientation = "column"; 
@@ -74,8 +77,6 @@ function populateGroupList(){
     groupList.selection = 0;
 }
 
-layerList.onChange = populateGroupList;
-
 function duplicateGroup(layerName,propertyName){
     app.project.activeItem.layers.byName(layerName).property("Contents").property(propertyName).duplicate();
 }
@@ -97,6 +98,8 @@ function getGroupNames(layer){
     }
     return listOfGroupNames;
 }
+
+layerList.onChange = populateGroupList;
 
 duplicateButton.onClick = function(){
     duplicateGroup(layerList.selection.text,groupList.selection.text);
